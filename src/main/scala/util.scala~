@@ -1,0 +1,7 @@
+package util
+
+import ir._
+
+def print_ir_tree(tree : IR_Node) = {
+  tree.prettyPrint(0)
+}

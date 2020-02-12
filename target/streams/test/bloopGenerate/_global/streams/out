@@ -1,0 +1,4 @@
+[debug] [javacompiler-test] Classpath dependencies List()
+[debug] [javacompiler-test] Dependencies from configurations List(javacompiler)
+[debug] Bloop wrote the configuration of project 'javacompiler-test' to '/Users/bn/Documents/JavaCompiler/.bloop/javacompiler-test.json'
+[success] Generated .bloop/javacompiler-test.json

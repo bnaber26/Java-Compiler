@@ -1,0 +1,33 @@
+import codegen.MipsCodeGenerator
+import token.Tokenizer
+import parser.Parser
+import typecheck.TypeChecker
+import canon.Canonicalizer
+import scala.io.Source
+import frame.Frame
+import util.Util.{print_ir_tree, print_program}
+
+
+object Main extends App {
+  val filename = "/Users/bn/Documents/sample_program.java"
+  val tokens = (new Tokenizer(filename)).tokenize_input()
+  val ast = (new Parser(tokens)).parse()
+  val type_checker = new TypeChecker(ast)
+  val symbol_tables_collection = type_checker.get_symbol_tables
+  val main_symbol_table = type_checker.get_main_symbol_table
+  val types_correct = type_checker.type_check()
+  if (types_correct) {
+    val code_generator = new MipsCodeGenerator(ast, symbol_tables_collection, main_symbol_table)
+    val (main_code, fragments) = code_generator.get_code_and_fragments
+    println("before canonicalization:")
+    print_program(main_code, fragments.toList)
+
+    val canonicalizer = new Canonicalizer(main_code, fragments.toList)
+    val (new_main, new_fragments) = canonicalizer.transform()
+    println("\n after canonicalization:")
+    print_program(new_main, new_fragments.toList)
+  }
+  else {
+    println("Syntax errors, aborting compilation")
+  }
+}

@@ -1,0 +1,26 @@
+package canon
+
+import ir._
+import fragment.Fragment
+import scala.collection.mutable.ListBuffer
+
+class Canonicalizer(val main_ir : ir.Stmt, val fragments : List[Fragment]) {
+
+  def transform() : (ir.Stmt, List[Fragment]) = {
+    println("Calling transform on main IR Node")
+    val transformed_main = main_ir.transform()
+    println("Transformed main is as follows")
+    transformed_main.prettyPrint(0)
+    val transformed_fragments = ListBuffer[Fragment]()
+    for (frag <- fragments) {
+      println("About to call transform on the following fragment")
+      frag.body.prettyPrint(0)
+      val transformed_fragment = frag.transform()
+      println("transformed fragment body is:")
+      transformed_fragment.body.prettyPrint(0)
+      transformed_fragments += transformed_fragment
+    }
+    println("Just returned from calling transform() on all fragments")
+    (transformed_main, transformed_fragments.toList)
+  }
+}

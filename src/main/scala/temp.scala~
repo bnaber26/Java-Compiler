@@ -1,0 +1,9 @@
+package temp
+
+object Temp {
+  var current_num = 0
+
+  def increase_num() : Int = {
+
+  }
+}

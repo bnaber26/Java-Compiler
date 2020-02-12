@@ -1,0 +1,79 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Wed Feb 12 15:47:30 2020
+;; Desktop file format version 208
+;; Emacs version 26.3
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (24132 4098 454086 0) (desktop . "208") "bn@client-141-23-129-61.wlan.tu-berlin.de" nil nil ((((minibuffer . t) (font-backend mac-ct) (fontsize . 0) (font . "-*-Menlo-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "wheat") (background-color . "black") (line-spacing) (left-fringe . 8) (right-fringe . 8) (no-special-glyphs) (undecorated) (ns-appearance . unbound) (ns-transparent-titlebar . unbound) (z-group) (no-focus-on-map) (no-accept-focus) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 0) (alpha) (fullscreen) (display-type . color) (background-mode . dark) (cursor-color . "thistle") (environment) (frameset--id . "BEE4-B3C8-CE76-10F9") (frameset--mini t . t) (height . 37) (width . 124) (modeline . t) (unsplittable) (left . 0) (top . 23) (icon-name) (visibility . t) (display . "MacBook-Pro-42.local") (explicit-name) (tool-bar-position . top)) ((min-height . 8) (min-width . 10) (min-height-ignore . 4) (min-width-ignore . 6) (min-height-safe . 2) (min-width-safe . 2) (min-pixel-height . 152) (min-pixel-width . 100) (min-pixel-height-ignore . 76) (min-pixel-width-ignore . 60) (min-pixel-height-safe . 38) (min-pixel-width-safe . 20)) vc (pixel-width . 1271) (pixel-height . 684) (total-width . 127) (total-height . 36) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 1271) (pixel-height . 342) (total-width . 127) (total-height . 18) (normal-height . 0.5) (normal-width . 1.0) (buffer "intermediate.scala" (selected) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars nil 2 t nil 0 t) (vscroll . 0) (dedicated) (point . 13918) (start . 13425))) (leaf (last . t) (pixel-width . 1271) (pixel-height . 342) (total-width . 127) (total-height . 18) (normal-height . 0.5) (normal-width . 1.0) (buffer "canonical.scala" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars nil 2 t nil 0 t) (vscroll . 0) (dedicated) (point . 2041) (start . 1709)))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring '("class Seq" "class MoveCall" "def reorder_stmt" "class Move" "class Call" "class Move" "class ExpList" "def reorder_s" "class CJump" "def reorder" "reorder_stmt" "IdExpNode" "LessThanNode" "IfNode" "Const(" "CJump"))
+(setq register-alist '((48 . "override ")))
+(setq file-name-history '("/Users/bn/Documents/JavaCompiler/src/main/scala/canonical.scala" "/Users/bn/Documents/JavaCompiler/src/main/scala/main.scala" "/Users/bn/Documents/JavaCompiler/src/main/scala/intermediate.scala" "/Users/bn/Documents/JavaCompiler/src/main/scala/translate.scala" "/Users/bn/Documents/JavaCompiler/src/main/scala/codegen.scala"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/Users/bn/Documents/JavaCompiler/src/main/scala/canonical.scala"
+  "canonical.scala"
+  'scala-mode
+  '(eldoc-mode undo-tree-mode flycheck-mode projectile-mode flx-ido-mode yas-minor-mode lsp-mode company-mode)
+  2041
+  '(2043 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 24132 4091 710255 0) (buffer-file-coding-system . utf-8-unix) (overwrite-mode))
+  '((mark-ring (1700))))
+
+(desktop-create-buffer 208
+  "/Users/bn/Documents/JavaCompiler/src/main/scala/main.scala"
+  "main.scala"
+  'scala-mode
+  '(eldoc-mode undo-tree-mode flycheck-mode projectile-mode flx-ido-mode yas-minor-mode lsp-mode company-mode)
+  854
+  '(854 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 24131 64359 367800 0) (buffer-file-coding-system . utf-8-unix) (overwrite-mode))
+  '((mark-ring (855 1173 1174 1174 1213))))
+
+(desktop-create-buffer 208
+  "/Users/bn/Documents/JavaCompiler/src/main/scala/intermediate.scala"
+  "intermediate.scala"
+  'scala-mode
+  '(eldoc-mode undo-tree-mode flycheck-mode projectile-mode flx-ido-mode yas-minor-mode lsp-mode company-mode)
+  13918
+  '(10487 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 24132 4091 710255 0) (buffer-file-coding-system . utf-8-unix) (overwrite-mode))
+  '((mark-ring (10487 10487 513 8484 8484 18054 18055 4750 4750 8368 12825 12825 12825 1065 648 2295))))
+
+(desktop-create-buffer 208
+  "/Users/bn/Documents/JavaCompiler/src/main/scala/codegen.scala"
+  "codegen.scala"
+  'scala-mode
+  '(eldoc-mode undo-tree-mode flycheck-mode projectile-mode flx-ido-mode yas-minor-mode lsp-mode company-mode)
+  16169
+  '(16169 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 24131 57990 149855 0) (buffer-file-coding-system . utf-8-unix) (overwrite-mode))
+  '((mark-ring (16170 21218 1 1 13843 16194 16169 16170 10643 10643 10643 9018 7056 1 1 1))))
+
+(desktop-create-buffer 208
+  "/Users/bn/Documents/JavaCompiler/src/main/scala/translate.scala"
+  "translate.scala"
+  'scala-mode
+  '(eldoc-mode undo-tree-mode flycheck-mode projectile-mode flx-ido-mode yas-minor-mode lsp-mode company-mode)
+  1875
+  '(1875 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 24131 57523 222871 0) (buffer-file-coding-system . utf-8-unix) (overwrite-mode))
+  '((mark-ring (1876 438 291 251 673 438))))
+

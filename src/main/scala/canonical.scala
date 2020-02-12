@@ -7,55 +7,86 @@ import scala.collection.mutable.ListBuffer
 class Canonicalizer(val main_ir : ir.Stmt, val fragments : List[Fragment]) {
 
   def transform() : (ir.Stmt, List[Fragment]) = {
-    println("Calling transform on main IR Node")
     val transformed_main = main_ir.transform()
-    println("Transformed main is as follows")
-    transformed_main.prettyPrint(0)
     val transformed_fragments = ListBuffer[Fragment]()
     for (frag <- fragments) {
-      println("About to call transform on the following fragment")
       frag.body.prettyPrint(0)
       val transformed_fragment = frag.transform()
-      println("transformed fragment body is:")
       transformed_fragment.body.prettyPrint(0)
       transformed_fragments += transformed_fragment
     }
-    println("Just returned from calling transform() on all fragments")
     (transformed_main, transformed_fragments.toList)
   }
 
 
-  def linearize(node : ir.IR_Node) : ir.IR_Node = {
+  def linearize(node : ir.Stmt) : ir.Stmt= {
     // Basic idea: We will transform statements of the form Seq(Seq(a,b), c) => Seq(a, Seq(b,v))
     // To do that we pattern match on the node to look for Seq(Seq(..),..) nodes. Then recurse on
     // left node of Seq. This will return a tuple of nodes, the first element contains the node
     // that we can move out of the Seq, and the second returns the rest of the statement
     // We will then move the inner Seq to the right node and recurse on the resulting node again
 
-    // I think I need a helper function to pull out the left node, this shouldn't be handled by
-    // a recursive call
-
-    def process_right_node(node : ir.Stmt) : ir.Stmt = {
-      val linearized_node = linearize(node)
-      linearized_node match {
-
+    def process_left_node(node : ir.Stmt) : (ir.Stmt, Option[ir.Stmt]) = {
+      node match {
+        case Seq(Seq(x, y), z) => {
+          // call recursively on node.left
+          val (move_out, left_rest) = process_left_node(node.asInstanceOf[ir.Seq].left)
+          left_rest match {
+            case Some(r) => (move_out, Some(Seq(r, z)))
+            case None => (move_out, Some(z))
+          }
+        }
+        case Seq(x, y) => {
+          (x, Some(y))
+        }
+        case x => {
+          (x, None)
+        }
       }
     }
 
     node match {
       case Seq(Seq(x, y), z) => {
         // Recurse on x
-        val linearized_left_node = linearize(node.asInstanceOf[ir.Seq].left)
-        // Recurse on updated right side
-        val linearized_right = process_right_node(Seq(keep_in, z))
-        Seq(move_out)
+        val (moved_out, rest) = process_left_node(node.asInstanceOf[Seq].left)
+
+        // Need to linearize new right node
+        val updated_right_node = rest match {
+          case Some(rest) => {
+            val temp_node = Seq(rest, z)
+            //temp_node.prettyPrint(0)
+            linearize(Seq(rest, z))
+          }
+          case None => linearize(z)
+        }
+
+        Seq(moved_out, updated_right_node)
       }
-      case Seq(x,y) => {
-        // x is not Seq, so we can move x out
-        // Note: Don't have to recurse on y here, since this will be done in the outer
-        // recursive call
-        (x, y)
+      case Seq(x, y) => Seq(x, linearize(y))
+      case x => x
+    }
+  }
+
+  def get_statement_list(node : ir.IR_Node) : ir.StmtList = {
+
+    def extract_stmts(node : ir.Stmt, stmts_list : List[ir.Stmt]) : List[ir.Stmt] = {
+      node match {
+        case Seq(x, y) => extract_stmts(y, stmts_list :+ x)
+        case x => stmts_list :+ x
       }
+    }
+
+    val stmts = List[ir.Stmt]()
+    node match {
+      case Eseq(s,_) => {
+        val linearized_stmt = linearize(s)
+        ir.StmtList(extract_stmts(linearized_stmt, stmts))
+      }
+      case x : ir.Stmt => {
+        val linearized_stmt = linearize(x)
+        ir.StmtList(extract_stmts(linearized_stmt, stmts))
+      }
+      case _ => throw new Exception("Cannot create a StmtList from ir.Exp")
     }
   }
 }

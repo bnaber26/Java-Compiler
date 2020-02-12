@@ -1,4 +1,6 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/bn/Documents/JavaCompiler/src/main/scala/translate.scala:91:7: class ArrayLookupExp needs to be abstract, since method gen_Cx in class ExpTranslate of type (t: temp.Label, f: temp.Label)ir.Stmt is not defined[0m
-[0m[[0m[31merror[0m] [0m[0mclass ArrayLookupExp(val arr : ir.Exp, val index : ir.Exp) extends Expression([0m
-[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/bn/Documents/JavaCompiler/src/main/scala/canonical.scala:55:31: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Option[ir.Stmt][0m
+[0m[[0m[31merror[0m] [0m[0m required: ir.Stmt[0m
+[0m[[0m[31merror[0m] [0m[0m          (move_out, Some(Seq(left_rest, z)))[0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

@@ -6,6 +6,9 @@ import canon.Canonicalizer
 import scala.io.Source
 import frame.Frame
 import util.Util.{print_ir_tree, print_program}
+import ir._
+
+import scala.collection.mutable.ListBuffer
 
 
 object Main extends App {
@@ -27,9 +30,41 @@ object Main extends App {
     println("\n after canonicalization:")
     print_program(new_main, new_fragments.toList)
     println("first tranformed fragment body")
-    println(new_fragments(0).body)
+    new_fragments(0).body.prettyPrint(0)
+
+    println("Trying to linearize the ir code:")
+    val linearized_main = canonicalizer.get_statement_list(main_code)
+    println("linearized main:")
+    linearized_main.prettyPrint(0)
+
+    val linearized_fragment_bodies = ListBuffer[ir.StmtList]()
+    for (frag <- new_fragments) {
+      val linearized = canonicalizer.linearize(frag.body.asInstanceOf[ir.Eseq].stmt)
+      println("linearized statement of fragment:")
+      linearized.prettyPrint(0)
+      linearized_fragment_bodies += canonicalizer.get_statement_list(frag.body)
+    }
+    for (linearized_body <- linearized_fragment_bodies) {
+      linearized_body.prettyPrint(0)
+    }
+
+    /*
+    println("Test linearization function")
+    val test_stmt = ir.Seq(ir.Seq(ir.Seq(ir.Move(ir.Temp(temp.Temp()), ir.Const(1)),
+        ir.Move(ir.Temp(temp.Temp()), ir.Const(0))), ir.Seq(ir.Seq(ir.Expression(ir.Const(0)),
+        ir.Expression(ir.Const(0))), ir.Expression(ir.Const(0)))),
+        ir.Expression(ir.Const(0)))
+    test_stmt.prettyPrint(0)
+
+    val linearized_stmt = canonicalizer.linearize(test_stmt)
+    println("linearized statement")
+    linearized_stmt.prettyPrint(0)
+     */
+
+
   }
   else {
     println("Syntax errors, aborting compilation")
   }
+
 }

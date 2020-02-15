@@ -175,6 +175,7 @@ case class AllocArray(val length : Exp) extends Exp {
   
   override def prettyPrint(indent : Int) = {
     println(" "*indent + "AllocArray")
+    length.prettyPrint(indent + 1)
   }
 
 }
@@ -370,6 +371,8 @@ case class Label(val label : temp.Label) extends Stmt {
     println(" "*indent + "Label: %s".format(label.toString))
   }
 
+  def get_temp_label = label
+
   override def transform() = this
 }
 
@@ -473,6 +476,23 @@ case class StmtList(val stmts : List[Stmt]) extends IrList {
   override def transform() = throw new Exception("transform() not implemented for StmtList")
 
   override def build(exps : ExpList) = throw new Exception("build is not implemented for StmtsList")
+
+  def foreach(stmt : Stmt => Unit) : Unit = {
+    stmts.foreach(stmt)
+  }
+
+  def ::(stmt : Stmt) : StmtList = {
+    StmtList(stmt :: stmts)
+  }
+
+  def :+(stmt : Stmt) : StmtList = {
+    StmtList(stmts :+ stmt)
+  }
+
+  def head : Stmt = stmts.head
+
+  def last : Stmt = stmts.last
+
 }
 
 case class StmtsExpList(stmts : Stmt, exps : ExpList) extends IR_Node {

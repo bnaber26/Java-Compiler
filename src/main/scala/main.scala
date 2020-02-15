@@ -12,7 +12,7 @@ import scala.collection.mutable.ListBuffer
 
 
 object Main extends App {
-  val filename = "/Users/bn/Documents/sample_program.java"
+  val filename = "/Users/bn/Documents/Library/CS/Compilers/sample_program.java"
   val tokens = (new Tokenizer(filename)).tokenize_input()
   val ast = (new Parser(tokens)).parse()
   val type_checker = new TypeChecker(ast)
@@ -46,6 +46,15 @@ object Main extends App {
     }
     for (linearized_body <- linearized_fragment_bodies) {
       linearized_body.prettyPrint(0)
+    }
+
+    println()
+    println()
+    println("Basic Blocks:")
+    val first_fragment_blocks = canonicalizer.get_basic_blocks(linearized_fragment_bodies(0))
+    println("Number of blocks returned: %d".format(first_fragment_blocks.length))
+    for (block <- first_fragment_blocks) {
+      block.prettyPrint()
     }
 
     /*

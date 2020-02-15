@@ -318,7 +318,9 @@ class Parser(val tokens : List[Token]) {
       case RightCurly(_) | RETURN(_) => {
         return StmtList(previous_stmts)
       }
-      case _ => {
+      case t => {
+        println("Inside STMTS, next token is:")
+        println(t)
         assert(next_token == IF(0) | next_token == WHILE(0) |  next_token == PRINT(0) |
            next_token == ID("", 0) | next_token == RETURN(0) | next_token == RightCurly(0))
 

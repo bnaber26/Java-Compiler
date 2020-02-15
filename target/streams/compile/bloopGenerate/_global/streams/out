@@ -1,4 +1,4 @@
-[debug] [javacompiler] Classpath dependencies List()
-[debug] [javacompiler] Dependencies from configurations List()
-[debug] Bloop wrote the configuration of project 'javacompiler' to '/Users/bn/Documents/JavaCompiler/.bloop/javacompiler.json'
-[success] Generated .bloop/javacompiler.json
+[debug] [java-compiler] Classpath dependencies List()
+[debug] [java-compiler] Dependencies from configurations List()
+[debug] Bloop wrote the configuration of project 'java-compiler' to '/Users/BN/Documents/Library/CS/Compilers/Java-Compiler/.bloop/java-compiler.json'
+[success] Generated .bloop/java-compiler.json

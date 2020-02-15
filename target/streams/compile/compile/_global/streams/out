@@ -1,6 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/bn/Documents/JavaCompiler/src/main/scala/canonical.scala:55:31: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : Option[ir.Stmt][0m
-[0m[[0m[31merror[0m] [0m[0m required: ir.Stmt[0m
-[0m[[0m[31merror[0m] [0m[0m          (move_out, Some(Seq(left_rest, z)))[0m
-[0m[[0m[31merror[0m] [0m[0m                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/BN/Documents/Library/CS/Compilers/Java-Compiler/src/main/scala/canonical.scala:292:25: not found: value false_label[0m
+[0m[[0m[31merror[0m] [0m[0m                    if (false_label.get_name != "ArrayBoundsException") {[0m
+[0m[[0m[31merror[0m] [0m[0m                        ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

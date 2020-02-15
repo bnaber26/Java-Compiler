@@ -8,3 +8,9 @@ run
 quit
 exit
 run
+compile
+ls
+run
+compile
+run
+exit

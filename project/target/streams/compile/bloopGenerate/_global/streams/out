@@ -1,0 +1,4 @@
+[debug] [java-compiler-build] Classpath dependencies List()
+[debug] [java-compiler-build] Dependencies from configurations List()
+[debug] Bloop wrote the configuration of project 'java-compiler-build' to '/Users/BN/Documents/Library/CS/Compilers/Java-Compiler/project/.bloop/java-compiler-build.json'
+[success] Generated .bloop/java-compiler-build.json

@@ -1,0 +1,9 @@
+package block
+
+import scala.collection.mutable.ListBuffer
+
+case class BasicBlock(val stmts : StmtList) {
+  def append_statement(stmt : ir.Stmt) : BasicBlock = {
+    BasicBlock(stmts :+ stmt)
+  }
+}

@@ -38,4 +38,8 @@ object Label {
 
 case class Label(name : String) {
   def get_name = name
+
+  override def equals(that : Any) : Boolean = {
+    that.isInstanceOf[Label] && (that.asInstanceOf[Label].name == name)
+  }
 }

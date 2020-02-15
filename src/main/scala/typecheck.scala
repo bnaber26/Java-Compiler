@@ -353,8 +353,8 @@ class TypeChecker(val syntax_tree : AST) {
             val var_type = symbol_table.lookup_var_type(s)
             var_type match {
               case Some(t) => {
-                if (t != "int") {
-                  output_type_error(t, "int", line_num)
+                if (t != "int[]") {
+                  output_type_error(t, "int[]", line_num)
                   return false
                 }
                 true

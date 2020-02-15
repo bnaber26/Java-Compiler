@@ -496,8 +496,8 @@ class MipsCodeGenerator(ast : AST, class_symbol_tables_list : HashMap[String, Cl
     // First check whether length of array (first element in array: Mem(arr)) is smaller than
     // the index. If it is then we generate code for the array lookup, if it isn't then
     // we jump to the label which generates code to print an array exception
-    val code = ir.Eseq(ir.Seq(ir.CJump("<", ir.Mem(code_arr), code_index, index_in_bounds,
-      index_bounds_exception_label), valid_path),
+    val code = ir.Eseq(ir.Seq(ir.CJump(">=", ir.Mem(code_arr), code_index,
+      index_bounds_exception_label, index_in_bounds), valid_path),
       ir.Temp(result))
 
     code
